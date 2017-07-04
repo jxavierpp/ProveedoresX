@@ -6,8 +6,9 @@ use App\Supplier;
 
 class SupplierController extends Controller {
     public function index(){
-        $prov = Supplier::orderBy('id','asc')->get();
-        return view('proveedores')->with('proveedor',$prov);
+        $data = Supplier::orderBy('id','asc')->get();
+        return response()->json($data, 200);
+            //view('proveedores')->with('proveedor', $data);
     }
 
     public function store(Request $request){
@@ -29,13 +30,14 @@ class SupplierController extends Controller {
         $supplier->supplierName = $request->input('supplierName');
         $supplier->supplierEmail = $request->input('supplierEmail');
         $supplier->supplierPhone = $request->input('supplierPhone');
-        $supplier->is_active = $request->input('is_active');
         $supplier->save();
         return 'Supplier record succesfully updated with id #' .$supplier->id;
     }
 
     public function destroy($id){
-        $supplier = Supplier::find($id)->delete();
+        $supplier = Supplier::find($id);
+        $supplier->is_active = false;
+        $supplier->save();
         return 'Supplier record succesfully deleted';
     }
 }
