@@ -19,15 +19,20 @@ app.controller('SupplierController', function($scope,$http,API_URL){
                 console.log("editar");
                 $scope.id = id;
                 $http.get(API_URL + 'proveedores/' + id).then(function successCallback(response){
-                    console.log(response.data);
-                    $scope.supplier = response;
+                    $scope.supplier = response.data;
                 });
                 break;
             default:
                 break;
         }
-        console.log(id);
+
         $('#myModal').modal('show');
+        $("#myModal").on("hidden.bs.modal", function(e){
+            $("#supplierName").val("");
+            $("#supplierEmail").val("");
+            $("#supplierPhone").val("");
+            $("#supplierPosition").val("");
+        });
     }
 
     //save new supplier and update existing supplier
@@ -35,10 +40,12 @@ app.controller('SupplierController', function($scope,$http,API_URL){
         var url = API_URL + "proveedores";
         var metodo = 'POST';
         if(modalstate === 'edit'){
+            console.log("editar");
             url += "/" + id;
             metodo = 'PUT';
+            console.log($scope.supplier);
         }
-
+        //cope.supplier.
         $http({
             method: metodo,
             url: url,

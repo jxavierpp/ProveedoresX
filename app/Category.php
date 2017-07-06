@@ -17,8 +17,8 @@ class Category extends Model {
      * Pertenece al padre "Suppliers".
      */
     public function suppliers(){
-        return $this->belongsToMany('App\Supplier');
-    }
+    return $this->belongsToMany('App\Supplier');
+}
     public function products() {
         return $this->hasMany('App\Product');
     }

@@ -27,6 +27,7 @@ class SupplierController extends Controller {
 
     public function update(Request $request, $id){
         $supplier = Supplier::find($id);
+        dd($supplier);
         $supplier->supplierName = $request->input('supplierName');
         $supplier->supplierEmail = $request->input('supplierEmail');
         $supplier->supplierPhone = $request->input('supplierPhone');

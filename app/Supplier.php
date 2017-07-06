@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Esta clase es de un proveedor (supplier) y sus atributos
+ * @property array|string supplierEmail
  */
 class Supplier extends Model {
     //tabla personalizada

@@ -5,7 +5,6 @@
     @include('partials.header')
 </head>
 <body>
-    {{ csrf_token() }}
     <nav class="navbar navbar-default">
         @include('layouts.main.includes.nav')
     </nav>
@@ -47,15 +46,15 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">x</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">@{{ form_title }}</h4>
+                        <h4 class="modal-title" id="myModalLabel" >@{{ form_tittle }}</h4>
                     </div>
                     <div class="modal-body">
-                        <form name="frmSupplier"class="form-horizontal" novalidate="">
+                        <form name="frmSupplier" class="form-horizontal" novalidate="">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Supplier Name</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="supplierName" name="supplierName"
-                                           placeholder="Supplier Name" value="@{{supplierName}}" ng-model="supplier.supplierName"
+                                           placeholder="Supplier Name" value="@{{ supplierName }}" data-ng-model="supplier.supplierName"
                                            ng-required="true">
                                     <span ng-show="frmSupplier.supplierName.$invalid && frmSupplier.supplierName.$touched">Supplier Name field is required</span>
                                 </div>
@@ -64,27 +63,18 @@
                                 <label class="col-sm-3 control-label">Supplier Email</label>
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" id="supplierEmail" name="supplierEmail"
-                                           placeholder="Supplier Email" value="@{{supplierEmail}}" ng-model="supplier.supplierEmail"
+                                           placeholder="Supplier Email" value="@{{  supplierEmail }}" ng-model="supplier.supplierEmail"
                                            ng-required="true">
                                     <span ng-show="frmSupplier.supplierEmail.$invalid && frmSupplier.supplierEmail.$touched">Supplier Email field is required</span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Supplier Contact</label>
+                                <label class="col-sm-3 control-label">Supplier Phone</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="supplierContact" name="supplierContact"
-                                           placeholder="Supplier Phone" value="@{{supplierPhone}}" ng-model="supplier.supplierPhone"
+                                    <input type="text" class="form-control" id="supplierPhone" name="supplierPhone"
+                                           placeholder="Supplier Phone" value="@{{ supplierPhone }}" ng-model="supplier.supplierPhone"
                                            ng-required="true">
                                     <span ng-show="frmSupplier.supplierPhone.$invalid && frmSupplier.supplierPhone.$touched">Supplier Contact field is required</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Supplier Position</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="supplierPosition" name="supplierPosition"
-                                           placeholder="Supplier Position" value="@{{supplierPosition}}" ng-model="supplier.supplierPosition"
-                                           ng-required="true">
-                                    <span ng-show="frmSupplier.supplierPosition.$invalid && frmSupplier.supplierPosition.$touched">Supplier Position field is required</span>
                                 </div>
                             </div>
                         </form>
@@ -96,11 +86,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
     <footer class="footer">
         @include('layouts.main.includes.footer')
     </footer>
